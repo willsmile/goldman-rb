@@ -1,0 +1,57 @@
+#! /usr/bin/env ruby
+# frozen_string_literal: true
+
+# (C) Wei Chen (willsmile)
+# MIT license
+
+require "goldman"
+require "optparse"
+
+GOLDMANPATH = ENV["GOLDMANPATH"] || File.expand_path("~/.goldman")
+CONFIG_FILENAME = "config.yml"
+NON_OPERATIONAL_OPTS = [:config]
+
+# default value
+@options = {
+  config: GOLDMANPATH + "/" + CONFIG_FILENAME
+}
+
+opts = OptionParser.new do |opts|
+  opts.on("-c", "--config FILE", "Use a config file") { |v| @options[:config] = v }
+  opts.on("-g", "--generate", "Generate list of schedule options") { |v| @options[:generate] = v }
+  opts.on("-s", "--start [DATE]", "Set start date") { |v| @options[:start_date] = v }
+  opts.on("-e", "--end [DATE]", "Set end date") { |v| @options[:end_date] = v }
+  opts.on("-d", "--day [INTEGER]", "Set day interval from start date") { |v| @options[:day] = v }
+  opts.on("-w", "--week [INTEGER]", "Set week interval  from start date") { |v| @options[:week] = v }
+  opts.on("-v", "--version", "Show tool version") { |v| @options[:version] = v }
+
+  opts.parse!(ARGV)
+end
+
+def error(message)
+  warn "ERROR: #{message}"
+  exit 1
+end
+
+begin
+  date_form = Goldman::DateForm.new(@options)
+  config = Goldman::Config.new(@options[:config])
+  formatter = Goldman::Formatter.new(config)
+  data = Goldman::DataLoader.new(config).data
+  generator = Goldman::Generator.new(data, formatter, date_form)
+  
+  @options.each do |k, v|
+    case k
+    when :generate
+      generator.exec
+    when *NON_OPERATIONAL_OPTS
+      # Do nothing here
+    when :version
+      Goldman.version
+    end
+  end
+rescue Goldman::Error => ex
+  error ex.message
+rescue Errno::ENOENT
+  error "Config file (#{@options[:config]}) dose not exist."
+end

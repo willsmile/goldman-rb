@@ -1,0 +1,18 @@
+data:
+  weekday:
+    - "12:00~13:00"
+    - "18:00~19:00"
+  monday: 
+    - "16:00~17:00"
+
+format:
+  schedule: "%{date}(%{wday}) %{time}"
+  date: "%Y/%m/%d"
+  wday:
+    monday: "月"
+    tuesday: "火"
+    wednesday: "水"
+    thursday: "木"
+    friday: "金"
+    saturday: "土"
+    sunday: "日"

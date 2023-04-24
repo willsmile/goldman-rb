@@ -1,0 +1,10 @@
+*.bak
+*.rbc
+*.swp
+*.gem
+.envrc
+.DS_Store
+.idea
+/coverage
+/pkg
+Gemfile.lock

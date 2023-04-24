@@ -1,0 +1,56 @@
+AllCops:
+  TargetRubyVersion: 2.7
+  DisabledByDefault: true
+  SuggestExtensions: false
+  Exclude:
+    - goldman.gemspec
+    - bin/*
+    - vendor/**/*
+
+Style/HashSyntax:
+  Enabled: true
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+Style/MultilineIfThen:
+  Enabled: true
+
+Style/MethodDefParentheses:
+  Enabled: true
+
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+
+Layout/IndentationWidth:
+  Enabled: true
+
+Layout/IndentationStyle:
+  Enabled: true
+
+Layout/EmptyLines:
+  Enabled: true
+
+Layout/TrailingEmptyLines:
+  Enabled: true
+
+Layout/TrailingWhitespace:
+  Enabled: true
+
+Layout/SpaceBeforeBlockBraces:
+  Enabled: true
+
+Layout/SpaceInsideBlockBraces:
+  Enabled: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: true
+
+Layout/CaseIndentation:
+  Enabled: true
+
+Layout/EndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: variable
