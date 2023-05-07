@@ -38,7 +38,7 @@ begin
   formatter = Goldman::Formatter.new(config)
   data = Goldman::DataLoader.new(config).data
   generator = Goldman::Generator.new(data, formatter, date_form)
-  
+
   @options.each do |k, v|
     case k
     when :generate
