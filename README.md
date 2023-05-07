@@ -12,7 +12,8 @@ gem install goldman
 ```
 
 ## Setup and configuration
-Please create a configuration file `config.yml` in the path `~/.goldman`. If you want to change the config path, please use the environment variable `GOLDMANPATH.`
+Please create a configuration file (`*.yml`) and use the environment variable `GOLDMAN_RB_PATH` to set up the file's path.
+If `GOLDMAN_RB_PATH` is not set, the tool will use the default file path `~/.goldman/config.yml`.
 
 Please define the data of schedule options are described in `config.yml` as follows.
 The available data keys are `everyday`, `weekday`, `weekend`, and the day of the week.
