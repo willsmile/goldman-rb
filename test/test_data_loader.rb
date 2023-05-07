@@ -14,8 +14,8 @@ class TestDataLoader < Minitest::Test
       5 => ["12:00~13:00", "18:00~19:00"]
     }
     config_data = {
-      weekday: ["12:00~13:00", "18:00~19:00"],
-      monday: ["16:00~17:00"]
+      Weekday: ["12:00~13:00", "18:00~19:00"],
+      Monday: ["16:00~17:00"]
     }
     config = DummyConfig.new(config_data, nil)
     data = Goldman::DataLoader.new(config).data

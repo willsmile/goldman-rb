@@ -7,13 +7,12 @@
 require "goldman"
 require "optparse"
 
-GOLDMANPATH = ENV["GOLDMANPATH"] || File.expand_path("~/.goldman")
-CONFIG_FILENAME = "config.yml"
+DEFAULT_CONFIG_FILEPATH = ENV["GOLDMAN_RB_PATH"] || File.expand_path("~/.goldman/config.yml")
 NON_OPERATIONAL_OPTS = [:config]
 
 # default value
 @options = {
-  config: GOLDMANPATH + "/" + CONFIG_FILENAME
+  config: DEFAULT_CONFIG_FILEPATH
 }
 
 opts = OptionParser.new do |opts|
@@ -39,7 +38,7 @@ begin
   formatter = Goldman::Formatter.new(config)
   data = Goldman::DataLoader.new(config).data
   generator = Goldman::Generator.new(data, formatter, date_form)
-  
+
   @options.each do |k, v|
     case k
     when :generate

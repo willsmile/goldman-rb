@@ -31,15 +31,15 @@ module Goldman
     end
 
     def weekday
-      @raw_data[:weekday]
+      @raw_data[:Weekday]
     end
 
     def weekend
-      @raw_data[:weekend]
+      @raw_data[:Weekend]
     end
 
     def everyday
-      @raw_data[:everyday]
+      @raw_data[:Everyday]
     end
   end
 end

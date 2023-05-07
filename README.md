@@ -12,24 +12,25 @@ gem install goldman
 ```
 
 ## Setup and configuration
-Please create a configuration file `config.yml` in the path `~/.goldman`. If you want to change the config path, please use the environment variable `GOLDMANPATH.`
+Please create a configuration file (`*.yml`) and use the environment variable `GOLDMAN_RB_PATH` to set up the file's path.
+If `GOLDMAN_RB_PATH` is not set, the tool will use the default file path `~/.goldman/config.yml`.
 
 Please define the data of schedule options are described in `config.yml` as follows.
 The available data keys are `everyday`, `weekday`, `weekend`, and the day of the week.
 
 ```yml:config.yml
 data:
-  everyday:
+  Everyday:
     - "10:00~11:00"
-  weekday:
+  Weekday:
     - "12:00~13:00"
-  weekend:
+  Weekend:
     - "20:00~21:00"
-  monday: 
+  Monday: 
     - "16:00~17:00"
-  wednesday:
+  Wednesday:
     - "16:00~17:00"
-  thursday:
+  Thursday:
     - "16:00~17:00"
 ```
 
@@ -40,13 +41,13 @@ format:
   schedule: "%{date}(%{wday}) %{time}"
   date: "%Y/%m/%d"
   wday:
-    monday: "月"
-    tuesday: "火"
-    wednesday: "水"
-    thursday: "木"
-    friday: "金"
-    saturday: "土"
-    sunday: "日"
+    Monday: "月"
+    Tuesday: "火"
+    Wednesday: "水"
+    Thursday: "木"
+    Friday: "金"
+    Saturday: "土"
+    Sunday: "日"
 ```
 
 ## Usage
