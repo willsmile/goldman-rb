@@ -10,13 +10,13 @@ class TestFormatter < Minitest::Test
       schedule: "%{date}(%{wday}) %{time}",
       date: "%Y-%m-%d",
       wday: {
-        monday: "Mon",
-        tuesday: "Tue",
-        wednesday: "Wed",
-        thursday: "Thu",
-        friday: "Fri",
-        saturday: "Sat",
-        sunday: "Sun"
+        Monday: "Mon",
+        Tuesday: "Tue",
+        Wednesday: "Wed",
+        Thursday: "Thu",
+        Friday: "Fri",
+        Saturday: "Sat",
+        Sunday: "Sun"
       }
     }
     config = DummyConfig.new(nil, format)
@@ -29,13 +29,13 @@ class TestFormatter < Minitest::Test
     format = {
       schedule: "%{date}, %{wday} %{time}",
       wday: {
-        monday: "Mon",
-        tuesday: "Tue",
-        wednesday: "Wed",
-        thursday: "Thu",
-        friday: "Fri",
-        saturday: "Sat",
-        sunday: "Sun"
+        Monday: "Mon",
+        Tuesday: "Tue",
+        Wednesday: "Wed",
+        Thursday: "Thu",
+        Friday: "Fri",
+        Saturday: "Sat",
+        Sunday: "Sun"
       }
     }
     config = DummyConfig.new(nil, format)

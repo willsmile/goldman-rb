@@ -20,17 +20,17 @@ The available data keys are `everyday`, `weekday`, `weekend`, and the day of the
 
 ```yml:config.yml
 data:
-  everyday:
+  Everyday:
     - "10:00~11:00"
-  weekday:
+  Weekday:
     - "12:00~13:00"
-  weekend:
+  Weekend:
     - "20:00~21:00"
-  monday: 
+  Monday: 
     - "16:00~17:00"
-  wednesday:
+  Wednesday:
     - "16:00~17:00"
-  thursday:
+  Thursday:
     - "16:00~17:00"
 ```
 
@@ -41,13 +41,13 @@ format:
   schedule: "%{date}(%{wday}) %{time}"
   date: "%Y/%m/%d"
   wday:
-    monday: "月"
-    tuesday: "火"
-    wednesday: "水"
-    thursday: "木"
-    friday: "金"
-    saturday: "土"
-    sunday: "日"
+    Monday: "月"
+    Tuesday: "火"
+    Wednesday: "水"
+    Thursday: "木"
+    Friday: "金"
+    Saturday: "土"
+    Sunday: "日"
 ```
 
 ## Usage

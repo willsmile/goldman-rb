@@ -13,13 +13,13 @@ module Goldman
     schedule: "%{date}(%{wday}) %{time}",
     date: "%Y/%m/%d",
     wday: {
-      monday: "Mon",
-      tuesday: "Tue",
-      wednesday: "Wed",
-      thursday: "Thu",
-      friday: "Fri",
-      saturday: "Sat",
-      sunday: "Sun"
+      Monday: "Mon",
+      Tuesday: "Tue",
+      Wednesday: "Wed",
+      Thursday: "Thu",
+      Friday: "Fri",
+      Saturday: "Sat",
+      Sunday: "Sun"
     }
   }
 
