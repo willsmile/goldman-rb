@@ -3,6 +3,9 @@
 Goldman is a tool for [g]enerating [o]ption [l]ist of sche[d]ule. And goldman-rb is its ruby
 implementation.
 
+## Requirements
+- Ruby: MRI 3.0+
+
 ## Installation
 
 Goldman's installation is standard for a Ruby gem:
