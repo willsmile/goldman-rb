@@ -9,14 +9,15 @@ on:
 permissions:  # added using https://github.com/step-security/secure-workflows
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   test_and_lint:
     name: >-
-        ${{ matrix.os }} ${{ matrix.ruby }}
-    runs-on: ${{ matrix.os }}-latest
-    env:
-      # See https://github.com/tmm1/test-queue#environment-variables
-      TEST_QUEUE_WORKERS: 2
+      ${{ matrix.os }} ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
