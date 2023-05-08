@@ -11,13 +11,17 @@ permissions:  # added using https://github.com/step-security/secure-workflows
 
 jobs:
   test_and_lint:
-
+    name: >-
+        ${{ matrix.os }} ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}-latest
+    env:
+      # See https://github.com/tmm1/test-queue#environment-variables
+      TEST_QUEUE_WORKERS: 2
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
         ruby: ['3.0', '3.1', head]
-    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
