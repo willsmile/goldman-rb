@@ -17,8 +17,8 @@ class TestGenerator < Minitest::Test
                                        end_date_str: "2023-04-05",
                                        day_str: nil,
                                        week_str: nil).date_list
-    config = Goldman::Config.new(path)
-    formatter = Goldman::Formatter.new(config)
+    config = Goldman::Config.new(path: path)
+    formatter = Goldman::Formatter.new(customized: config.customized_format)
     data = Goldman::DataLoader.new(config).data
     generator = Goldman::Generator.new(data, formatter, date_list)
     output, _ = capture_io do
@@ -33,8 +33,8 @@ class TestGenerator < Minitest::Test
                                        end_date_str: "2023-04-05",
                                        day_str: nil,
                                        week_str: nil).date_list
-    config = Goldman::Config.new(path)
-    formatter = Goldman::Formatter.new(config)
+    config = Goldman::Config.new(path: path)
+    formatter = Goldman::Formatter.new(customized: config.customized_format)
     data = Goldman::DataLoader.new(config).data
     generator = Goldman::Generator.new(data, formatter, date_list)
     assert_raises Goldman::OperationError do
