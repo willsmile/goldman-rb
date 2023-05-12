@@ -6,7 +6,7 @@ module Goldman
   class Config
     attr_reader :raw_data, :customized_format
 
-    def initialize(path)
+    def initialize(path:)
       @path = path
       @config = load_file
       @raw_data = load_data
