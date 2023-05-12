@@ -39,7 +39,7 @@ begin
     day_str: @options[:day],
     week_str: @options[:week]
   ).date_list
-  config = Goldman::Config.new(@options[:config])
+  config = Goldman::Config.new(path: @options[:config])
   formatter = Goldman::Formatter.new(config)
   data = Goldman::DataLoader.new(config).data
   generator = Goldman::Generator.new(data, formatter, date_list)

@@ -17,7 +17,7 @@ class TestGenerator < Minitest::Test
                                        end_date_str: "2023-04-05",
                                        day_str: nil,
                                        week_str: nil).date_list
-    config = Goldman::Config.new(path)
+    config = Goldman::Config.new(path: path)
     formatter = Goldman::Formatter.new(config)
     data = Goldman::DataLoader.new(config).data
     generator = Goldman::Generator.new(data, formatter, date_list)
@@ -33,7 +33,7 @@ class TestGenerator < Minitest::Test
                                        end_date_str: "2023-04-05",
                                        day_str: nil,
                                        week_str: nil).date_list
-    config = Goldman::Config.new(path)
+    config = Goldman::Config.new(path: path)
     formatter = Goldman::Formatter.new(config)
     data = Goldman::DataLoader.new(config).data
     generator = Goldman::Generator.new(data, formatter, date_list)
