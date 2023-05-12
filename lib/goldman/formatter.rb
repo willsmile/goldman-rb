@@ -4,9 +4,9 @@ module Goldman
   class Formatter
     attr_reader :customized_format, :default_format
 
-    def initialize(config)
-      @customized_format = config.customized_format
-      @default_format = DEFAULT_FORMAT
+    def initialize(customized:, default: DEFAULT_FORMAT)
+      @customized_format = customized
+      @default_format = default
     end
 
     def schedule(date, time_str)
