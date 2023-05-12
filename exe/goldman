@@ -33,11 +33,14 @@ def error(message)
 end
 
 begin
-  date_form = Goldman::DateForm.new(@options)
+  date_list = Goldman::DateRange.new(start_date_str: @options[:start_date],
+                                     end_date_str: @options[:end_date],
+                                     day_str: @options[:day],
+                                     week_str: @options[:week]).date_list
   config = Goldman::Config.new(@options[:config])
   formatter = Goldman::Formatter.new(config)
   data = Goldman::DataLoader.new(config).data
-  generator = Goldman::Generator.new(data, formatter, date_form)
+  generator = Goldman::Generator.new(data, formatter, date_list)
 
   @options.each do |k, v|
     case k
