@@ -2,7 +2,7 @@
 
 require_relative "goldman/config"
 require_relative "goldman/data_loader"
-require_relative "goldman/date_form"
+require_relative "goldman/date_range"
 require_relative "goldman/formatter"
 require_relative "goldman/generator"
 require_relative "goldman/version"
