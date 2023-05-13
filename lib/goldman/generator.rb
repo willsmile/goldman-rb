@@ -1,23 +1,48 @@
 # frozen_string_literal: true
 
-require "date"
-
 module Goldman
   class Generator
-    def initialize(data, formatter, date_list)
+    attr_reader :schedules
+
+    def initialize(data:)
       @data = data
-      @formatter = formatter
-      @date_list = date_list
+      @schedules = load_schedules
     end
 
-    def exec
-      raise Goldman::OperationError.new("No data for schedule. Please define them in the config file.") if @data.empty?
+    private
 
-      @date_list.each do |date|
-        @data[date.cwday]&.each do |time|
-          @formatter.schedule(date, time)
-        end
+    def load_schedules
+      result = {}
+      Goldman::Wday.members.each do |w|
+        periods = []
+        periods += wday(w) unless wday(w).nil?
+        periods += everyday unless everyday.nil?
+        periods += weekday if Goldman::Wday.weekday?(w) && !weekday.nil?
+        periods += weekend if Goldman::Wday.weekend?(w) && !weekend.nil?
+        result[Goldman::Wday.to_num(w)] = sort(periods) unless periods.empty?
       end
+
+      result
+    end
+
+    def sort(periods)
+      periods.sort_by { _1.split(":").first.to_i }
+    end
+
+    def wday(name)
+      @data[name]
+    end
+
+    def weekday
+      @data[:Weekday]
+    end
+
+    def weekend
+      @data[:Weekend]
+    end
+
+    def everyday
+      @data[:Everyday]
     end
   end
 end
