@@ -20,8 +20,8 @@ class TestPresenter < Minitest::Test
       week_str: nil
     ).date_list
     config = Goldman::Config.new(path: path)
-    formatter = Goldman::Formatter.new(customized: config.customized_format)
-    schedules = Goldman::Generator.new(data: config.raw_data).schedules
+    formatter = Goldman::Formatter.new(customized: config.format)
+    schedules = Goldman::Generator.new(data: config.data).schedules
     presenter = Goldman::Presenter.new(
       schedules: schedules,
       formatter: formatter,
@@ -42,8 +42,8 @@ class TestPresenter < Minitest::Test
       week_str: nil
     ).date_list
     config = Goldman::Config.new(path: path)
-    formatter = Goldman::Formatter.new(customized: config.customized_format)
-    schedules = Goldman::Generator.new(data: config.raw_data).schedules
+    formatter = Goldman::Formatter.new(customized: config.format)
+    schedules = Goldman::Generator.new(data: config.data).schedules
     presenter = Goldman::Presenter.new(
       schedules: schedules,
       formatter: formatter,
