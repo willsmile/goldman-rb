@@ -41,7 +41,7 @@ begin
   ).to_a
   config = Goldman::Config.new(path: @options[:config])
   formatter = Goldman::Formatter.new(customized: config.format)
-  schedules = Goldman::Generator.new(data: config.data).schedules
+  schedules = Goldman::Schedule.new(data: config.data).generate
   presenter = Goldman::Presenter.new(
     schedules: schedules,
     formatter: formatter,

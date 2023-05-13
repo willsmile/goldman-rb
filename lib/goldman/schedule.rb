@@ -1,17 +1,13 @@
 # frozen_string_literal: true
 
 module Goldman
-  class Generator
-    attr_reader :schedules
+  class Schedule
 
     def initialize(data:)
       @data = data
-      @schedules = load_schedules
     end
 
-    private
-
-    def load_schedules
+    def generate
       result = {}
       Goldman::Wday.members.each do |w|
         periods = []

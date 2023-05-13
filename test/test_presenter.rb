@@ -21,7 +21,7 @@ class TestPresenter < Minitest::Test
     ).to_a
     config = Goldman::Config.new(path: path)
     formatter = Goldman::Formatter.new(customized: config.format)
-    schedules = Goldman::Generator.new(data: config.data).schedules
+    schedules = Goldman::Schedule.new(data: config.data).generate
     presenter = Goldman::Presenter.new(
       schedules: schedules,
       formatter: formatter,
@@ -43,7 +43,7 @@ class TestPresenter < Minitest::Test
     ).to_a
     config = Goldman::Config.new(path: path)
     formatter = Goldman::Formatter.new(customized: config.format)
-    schedules = Goldman::Generator.new(data: config.data).schedules
+    schedules = Goldman::Schedule.new(data: config.data).generate
     presenter = Goldman::Presenter.new(
       schedules: schedules,
       formatter: formatter,
