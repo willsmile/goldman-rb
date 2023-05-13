@@ -33,19 +33,19 @@ def error(message)
 end
 
 begin
-  date_list = Goldman::DateRange.new(
+  dates = Goldman::DateRange.new(
     start_date_str: @options[:start_date],
     end_date_str: @options[:end_date],
     day_str: @options[:day],
     week_str: @options[:week]
-  ).date_list
+  ).to_a
   config = Goldman::Config.new(path: @options[:config])
   formatter = Goldman::Formatter.new(customized: config.format)
   schedules = Goldman::Generator.new(data: config.data).schedules
   presenter = Goldman::Presenter.new(
     schedules: schedules,
     formatter: formatter,
-    date_list: date_list
+    dates: dates
   )
 
   @options.each do |k, v|

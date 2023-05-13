@@ -10,7 +10,7 @@ class TestDateRange < Minitest::Test
       day_str: nil,
       week_str: nil
     )
-    assert_equal 7, date_range.date_list.length
+    assert_equal 7, date_range.to_a.length
   end
 
   def test_date_range_with_options_start_date_only
@@ -23,7 +23,7 @@ class TestDateRange < Minitest::Test
     )
     assert_equal start_date, date_range.start_date
     assert_equal Date.new(2023, 04, 07), date_range.end_date
-    assert_equal 7, date_range.date_list.length
+    assert_equal 7, date_range.to_a.length
   end
 
   def test_date_range_with_options_start_date_and_day
@@ -36,7 +36,7 @@ class TestDateRange < Minitest::Test
     )
     assert_equal start_date, date_range.start_date
     assert_equal Date.new(2023, 04, 10), date_range.end_date
-    assert_equal 10, date_range.date_list.length
+    assert_equal 10, date_range.to_a.length
   end
 
   def test_date_range_with_options_start_date_and_week
@@ -49,7 +49,7 @@ class TestDateRange < Minitest::Test
     )
     assert_equal start_date, date_range.start_date
     assert_equal Date.new(2023, 04, 14), date_range.end_date
-    assert_equal 14, date_range.date_list.length
+    assert_equal 14, date_range.to_a.length
   end
 
   def test_date_range_with_options_start_date_and_end_date
@@ -63,7 +63,7 @@ class TestDateRange < Minitest::Test
     )
     assert_equal start_date, date_range.start_date
     assert_equal end_date, date_range.end_date
-    assert_equal 5, date_range.date_list.length
+    assert_equal 5, date_range.to_a.length
   end
 
   def test_date_range_with_options_start_date_is_after_end_date
