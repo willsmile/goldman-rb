@@ -6,8 +6,8 @@ class TestConfig < Minitest::Test
   def test_config_with_valid_config_path
     path = fixture_path("config.yml")
     config = Goldman::Config.new(path: path)
-    assert config.raw_data != {}
-    assert config.customized_format != {}
+    assert config.data != {}
+    assert config.format != {}
   end
 
   def test_config_with_invalid_config_path

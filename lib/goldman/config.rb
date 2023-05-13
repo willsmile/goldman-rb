@@ -4,13 +4,13 @@ require "psych"
 
 module Goldman
   class Config
-    attr_reader :raw_data, :customized_format
+    attr_reader :data, :format
 
     def initialize(path:)
       @path = path
       @config = load_file
-      @raw_data = load_data
-      @customized_format = load_customized_format
+      @data = load_data
+      @format = load_format
     end
 
     private
@@ -25,7 +25,7 @@ module Goldman
       @config[:data]
     end
 
-    def load_customized_format
+    def load_format
       return {} unless @config.has_key?(:format)
 
       @config[:format]

@@ -14,9 +14,11 @@ module Goldman
       validate!
     end
 
-    def date_list
+    def to_array
       (@start_date..@end_date).to_a
     end
+
+    alias_method :to_a, :to_array
 
     private
 
@@ -31,11 +33,13 @@ module Goldman
     end
 
     def validate!
-      end_date_err_msg = "The parameter of week (#{@week}) or day (#{@day}) is invalid."
-      raise Goldman::ParameterError.new(end_date_err_msg) if @end_date.nil?
-
-      date_range_err_msg = "The start_date (#{@start_date}) should be before end_date (#{@end_date})."
-      raise Goldman::ParameterError.new(date_range_err_msg) if @start_date > @end_date
+      if @end_date.nil?
+        end_date_err_msg = "The parameter of week (#{@week}) or day (#{@day}) is invalid."
+        raise Goldman::ParameterError.new(end_date_err_msg)
+      elsif @start_date > @end_date
+        date_range_err_msg = "The start_date (#{@start_date}) should be before end_date (#{@end_date})."
+        raise Goldman::ParameterError.new(date_range_err_msg)
+      end
     end
 
     def to_date!(str, source)

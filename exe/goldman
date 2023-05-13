@@ -33,21 +33,25 @@ def error(message)
 end
 
 begin
-  date_list = Goldman::DateRange.new(
+  dates = Goldman::DateRange.new(
     start_date_str: @options[:start_date],
     end_date_str: @options[:end_date],
     day_str: @options[:day],
     week_str: @options[:week]
-  ).date_list
+  ).to_a
   config = Goldman::Config.new(path: @options[:config])
-  formatter = Goldman::Formatter.new(customized: config.customized_format)
-  data = Goldman::DataLoader.new(config).data
-  generator = Goldman::Generator.new(data, formatter, date_list)
+  formatter = Goldman::Formatter.new(customized: config.format)
+  schedules = Goldman::Schedule.new(data: config.data).generate
+  presenter = Goldman::Presenter.new(
+    schedules: schedules,
+    formatter: formatter,
+    dates: dates
+  )
 
   @options.each do |k, v|
     case k
     when :generate
-      generator.exec
+      presenter.exec
     when *NON_OPERATIONAL_OPTS
       # Do nothing here
     when :version

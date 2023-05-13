@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 module Goldman
-  class DataLoader
-    def initialize(config)
-      @raw_data = config.raw_data
+  class Schedule
+
+    def initialize(data:)
+      @data = data
     end
 
-    def data
+    def generate
       result = {}
       Goldman::Wday.members.each do |w|
         periods = []
@@ -20,26 +21,24 @@ module Goldman
       result
     end
 
-    private
-
     def sort(periods)
       periods.sort_by { _1.split(":").first.to_i }
     end
 
     def wday(name)
-      @raw_data[name]
+      @data[name]
     end
 
     def weekday
-      @raw_data[:Weekday]
+      @data[:Weekday]
     end
 
     def weekend
-      @raw_data[:Weekend]
+      @data[:Weekend]
     end
 
     def everyday
-      @raw_data[:Everyday]
+      @data[:Everyday]
     end
   end
 end
