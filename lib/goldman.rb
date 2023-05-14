@@ -4,7 +4,7 @@ require_relative "goldman/config"
 require_relative "goldman/date_range"
 require_relative "goldman/formatter"
 require_relative "goldman/presenter"
-require_relative "goldman/schedule"
+require_relative "goldman/schedule_list"
 require_relative "goldman/version"
 require_relative "goldman/wday"
 

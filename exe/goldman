@@ -41,17 +41,18 @@ begin
   ).to_a
   config = Goldman::Config.new(path: @options[:config])
   formatter = Goldman::Formatter.new(customized: config.format)
-  schedules = Goldman::Schedule.new(data: config.data).generate
-  presenter = Goldman::Presenter.new(
-    schedules: schedules,
-    formatter: formatter,
+  list = Goldman::ScheduleList.new(
+    data: config.data,
     dates: dates
-  )
+  ).generate
 
   @options.each do |k, v|
     case k
     when :generate
-      presenter.exec
+      Goldman::Presenter.print_schedule_list(
+        list: list,
+        formatter: formatter
+      )
     when *NON_OPERATIONAL_OPTS
       # Do nothing here
     when :version
