@@ -4,20 +4,19 @@ require "date"
 
 module Goldman
   class Presenter
-    def initialize(schedules:, formatter:, dates:)
-      @schedules = schedules
-      @formatter = formatter
-      @dates = dates
-    end
+    class << self
+      def print_schedule_list(list:, formatter:)
+        print_no_schedule and return if list.empty?
 
-    def exec
-      raise Goldman::OperationError.new("No data for schedule. Please define them in the config file.") \
-        if @schedules.empty?
-
-      @dates.each do |date|
-        @schedules[date.cwday]&.each do |time|
-          @formatter.schedule(date, time)
+        list.each do |s|
+          formatter.schedule(s.date, s.option)
         end
+      end
+
+      private
+
+      def print_no_schedule
+        puts "There is no schedule in the period."
       end
     end
   end

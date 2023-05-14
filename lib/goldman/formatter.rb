@@ -9,8 +9,8 @@ module Goldman
       @default_format = default
     end
 
-    def schedule(date, time_str)
-      puts format(:schedule) % { date: formatted_date(date), wday: formatted_wday(date.cwday), time: time_str }
+    def schedule(date, option)
+      puts format(:schedule) % { date: formatted_date(date), wday: formatted_wday(date.cwday), time: option }
     end
 
     def format(target)

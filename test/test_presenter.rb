@@ -21,14 +21,15 @@ class TestPresenter < Minitest::Test
     ).to_a
     config = Goldman::Config.new(path: path)
     formatter = Goldman::Formatter.new(customized: config.format)
-    schedules = Goldman::Schedule.new(data: config.data).generate
-    presenter = Goldman::Presenter.new(
-      schedules: schedules,
-      formatter: formatter,
+    list = Goldman::ScheduleList.new(
+      data: config.data,
       dates: dates
-    )
+    ).generate
     output, _ = capture_io do
-      presenter.exec
+      Goldman::Presenter.print_schedule_list(
+        list: list,
+        formatter: formatter
+      )
     end
     assert_equal expected_output, output
   end
@@ -43,14 +44,16 @@ class TestPresenter < Minitest::Test
     ).to_a
     config = Goldman::Config.new(path: path)
     formatter = Goldman::Formatter.new(customized: config.format)
-    schedules = Goldman::Schedule.new(data: config.data).generate
-    presenter = Goldman::Presenter.new(
-      schedules: schedules,
-      formatter: formatter,
+    list = Goldman::ScheduleList.new(
+      data: config.data,
       dates: dates
-    )
-    assert_raises Goldman::OperationError do
-      presenter.exec
+    ).generate
+    expected_output = "There is no schedule in the period.\n"
+    assert_output(expected_output) do
+      Goldman::Presenter.print_schedule_list(
+        list: list,
+        formatter: formatter
+      )
     end
   end
 end
