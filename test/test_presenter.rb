@@ -26,7 +26,10 @@ class TestPresenter < Minitest::Test
       dates: dates
     ).generate
     output, _ = capture_io do
-      presenter.exec
+      Goldman::Presenter.print_schedule_list(
+        list: list,
+        formatter: formatter
+      )
     end
     assert_equal expected_output, output
   end
@@ -45,9 +48,12 @@ class TestPresenter < Minitest::Test
       data: config.data,
       dates: dates
     ).generate
-    )
-    assert_raises Goldman::OperationError do
-      presenter.exec
+    expected_output = "There is no schedule in the period.\n"
+    assert_output(expected_output) do
+      Goldman::Presenter.print_schedule_list(
+        list: list,
+        formatter: formatter
+      )
     end
   end
 end
