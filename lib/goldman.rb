@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative "goldman/cli"
 require_relative "goldman/config"
 require_relative "goldman/date_range"
 require_relative "goldman/formatter"
