@@ -6,5 +6,4 @@
 .DS_Store
 .idea
 /coverage
-/pkg
 Gemfile.lock
