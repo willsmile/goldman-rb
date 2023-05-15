@@ -9,7 +9,7 @@ module Goldman
         print_no_schedule and return if list.empty?
 
         list.each do |s|
-          formatter.schedule(s.date, s.option)
+          puts formatter.schedule_format % formatter.schedule(s.date, s.option)
         end
       end
 
