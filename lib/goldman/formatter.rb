@@ -10,7 +10,15 @@ module Goldman
     end
 
     def schedule(date, option)
-      puts format(:schedule) % { date: formatted_date(date), wday: formatted_wday(date.cwday), time: option }
+      {
+        date: formatted_date(date),
+        wday: formatted_wday(date.cwday),
+        time: option
+      }
+    end
+
+    def schedule_format
+      format(:schedule)
     end
 
     def format(target)
