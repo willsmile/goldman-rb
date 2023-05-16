@@ -3,6 +3,10 @@
 require "test_helper"
 
 class TestCli < Minitest::Test
+  def setup
+    ENV["GOLDMAN_RB_PATH"] = fixture_path("config.yml")
+  end
+
   def test_cli_with_default_argv
     argv = ["-g"]
     slient_output { Goldman::Cli.new(argv).run }
