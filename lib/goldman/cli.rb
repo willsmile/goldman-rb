@@ -41,8 +41,6 @@ module Goldman
         end
       rescue Goldman::Error => ex
         error ex.message
-      rescue Errno::ENOENT
-        error "Config file (#{@options[:config]}) dose not exist."
       end
     end
 

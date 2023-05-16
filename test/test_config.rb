@@ -12,7 +12,7 @@ class TestConfig < Minitest::Test
 
   def test_config_with_invalid_config_path
     path = fixture_path("no_exist_config.yml")
-    assert_raises Errno::ENOENT do
+    assert_raises Goldman::ConfigurationError do
       Goldman::Config.new(path: path)
     end
   end
