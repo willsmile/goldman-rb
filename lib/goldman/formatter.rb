@@ -2,6 +2,20 @@
 
 module Goldman
   class Formatter
+    DEFAULT_FORMAT = {
+      schedule: "%{date}(%{wday}) %{time}",
+      date: "%Y/%m/%d",
+      wday: {
+        Monday: "Mon",
+        Tuesday: "Tue",
+        Wednesday: "Wed",
+        Thursday: "Thu",
+        Friday: "Fri",
+        Saturday: "Sat",
+        Sunday: "Sun"
+      }
+    }
+
     attr_reader :customized_format, :default_format
 
     def initialize(customized:, default: DEFAULT_FORMAT)

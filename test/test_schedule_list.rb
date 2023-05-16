@@ -5,7 +5,6 @@ require "test_helper"
 class TestScheduleList < Minitest::Test
   def test_schedule_list_with_valid_data_in_config
     date_april_1st = Date.new(2023, 04, 01)
-    date_april_2nd = Date.new(2023, 04, 02)
     date_april_3rd = Date.new(2023, 04, 03)
     date_april_4th = Date.new(2023, 04, 04)
     schedule1 = Goldman::ScheduleList::Schedule.new(date_april_3rd, "12:00~13:00")

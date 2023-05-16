@@ -16,7 +16,11 @@ module Goldman
     private
 
     def load_file
-      Psych.safe_load_file(@path, symbolize_names: true)
+      begin
+        Psych.safe_load_file(@path, symbolize_names: true)
+      rescue Errno::ENOENT
+        raise Goldman::ConfigurationError.new("Config file (#{@path}) dose not exist.")
+      end
     end
 
     def load_data
