@@ -12,6 +12,19 @@ module Goldman
     end
 
     def run
+      @options.each do |k, v|
+        case k
+        when :generate
+          cmd_generate
+        when *NON_OPERATIONAL_OPTS
+          # Do nothing here
+        when :version
+          cmd_version
+        end
+      end
+    end
+
+    def cmd_generate
       dates = Goldman::DateRange.new(
         start_date_str: @options[:start_date],
         end_date_str: @options[:end_date],
@@ -25,19 +38,14 @@ module Goldman
         dates: dates
       ).generate
 
-      @options.each do |k, v|
-        case k
-        when :generate
-          Goldman::Presenter.print_schedule_list(
-            list: list,
-            formatter: formatter
-          )
-        when *NON_OPERATIONAL_OPTS
-          # Do nothing here
-        when :version
-          Goldman.version
-        end
-      end
+      Goldman::Presenter.print_schedule_list(
+        list: list,
+        formatter: formatter
+      )
+    end
+
+    def cmd_version
+      Goldman.version
     end
 
     private
