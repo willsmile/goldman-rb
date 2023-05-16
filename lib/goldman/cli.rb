@@ -4,7 +4,6 @@ require "optparse"
 
 module Goldman
   class Cli
-    DEFAULT_CONFIG_FILEPATH = ENV["GOLDMAN_RB_PATH"] || File.expand_path("~/.goldman/config.yml")
     NON_OPERATIONAL_OPTS = [:config]
 
     def initialize(argv)
@@ -53,7 +52,7 @@ module Goldman
     def parse_argv(argv)
       # default value
       options = {
-        config: DEFAULT_CONFIG_FILEPATH
+        config: ENV["GOLDMAN_RB_PATH"] || File.expand_path("~/.goldman/config.yml")
       }
 
       OptionParser.new do |opts|
