@@ -6,4 +6,9 @@
 
 require "goldman"
 
-Goldman::Cli.new(ARGV).run
+begin
+  Goldman::Cli.new(ARGV).run
+rescue Goldman::Error => ex
+  warn "ERROR: #{ex}"
+  exit 1
+end

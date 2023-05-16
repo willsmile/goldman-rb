@@ -12,35 +12,31 @@ module Goldman
     end
 
     def run
-      begin
-        dates = Goldman::DateRange.new(
-          start_date_str: @options[:start_date],
-          end_date_str: @options[:end_date],
-          day_str: @options[:day],
-          week_str: @options[:week]
-        ).to_a
-        config = Goldman::Config.new(path: @options[:config])
-        formatter = Goldman::Formatter.new(customized: config.format)
-        list = Goldman::ScheduleList.new(
-          data: config.data,
-          dates: dates
-        ).generate
+      dates = Goldman::DateRange.new(
+        start_date_str: @options[:start_date],
+        end_date_str: @options[:end_date],
+        day_str: @options[:day],
+        week_str: @options[:week]
+      ).to_a
+      config = Goldman::Config.new(path: @options[:config])
+      formatter = Goldman::Formatter.new(customized: config.format)
+      list = Goldman::ScheduleList.new(
+        data: config.data,
+        dates: dates
+      ).generate
 
-        @options.each do |k, v|
-          case k
-          when :generate
-            Goldman::Presenter.print_schedule_list(
-              list: list,
-              formatter: formatter
-            )
-          when *NON_OPERATIONAL_OPTS
-            # Do nothing here
-          when :version
-            Goldman.version
-          end
+      @options.each do |k, v|
+        case k
+        when :generate
+          Goldman::Presenter.print_schedule_list(
+            list: list,
+            formatter: formatter
+          )
+        when *NON_OPERATIONAL_OPTS
+          # Do nothing here
+        when :version
+          Goldman.version
         end
-      rescue Goldman::Error => ex
-        error ex.message
       end
     end
 
@@ -64,11 +60,6 @@ module Goldman
       end
 
       return options
-    end
-
-    def error(message)
-      warn "ERROR: #{message}"
-      exit 1
     end
   end
 end
